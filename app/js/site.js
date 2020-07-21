@@ -10,9 +10,13 @@
     });
   }
 
+  function animateImage() {
+    // const elm = document.querySelector('.floating-image-1');
+  }
+
   function onPageWheeling() {
-    window.addEventListener('scroll', () => {
-      console.log(window.scrollY);
+    window.addEventListener('wheel', () => {
+      animateImage();
     });
   }
 

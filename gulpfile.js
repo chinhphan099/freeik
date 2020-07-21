@@ -185,8 +185,8 @@ task('webserver', (done) => {
       host: ip.address(),
       port: process.env.PORT || 2222,
       directoryListing: true,
-      open: '/sitemap.html',
-      fallback: '/404.html'
+      open: '/index.html',
+      fallback: '/index.html'
     }));
 
   done();

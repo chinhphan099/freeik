@@ -31,6 +31,7 @@
 //! Header
 header {
   .position(fixed, 0 0 null 0);
+  z-index: 11;
   .scrolled & {
     &:before {
       bottom: 0;
@@ -117,4 +118,25 @@ footer {
       float: right;
     }
   }
+}
+
+section {
+  position: relative;
+  overflow-y: hidden;
+}
+.floating-image-1 {
+  position: absolute;
+  right: calc(~"100% - 970px / 2 + 100px");
+}
+.floating-image-2 {
+  display: none;
+  right: calc(~"100% - 970px / 2 + 100px");
+}
+.floating-image-3 {
+  display: none;
+  left: calc(~"100% - 970px / 2 + 100px");
+}
+.floating-image-4 {
+  display: none;
+  left: calc(~"100% - 970px / 2 + 100px");
 }
