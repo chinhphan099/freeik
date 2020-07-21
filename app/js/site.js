@@ -1,21 +1,10 @@
 class Site {
-  constructor(elm) {
-    this.elm = elm;
-    this.lastScrollTop = window.scrollY;
+  constructor() {
     this.mainPos = 0;
-    this.isScrollDown = true;
-    this.translateYMain = 0 ;
+    this.lastScrollTop = window.scrollY;
   }
 
-  checkIsScrollDown() {
-    if (window.scrollY > this.lastScrollTop) {
-      this.isScrollDown = true;
-    }
-    else {
-      this.isScrollDown = false;
-    }
-  }
-
+  //! DONE
   handleClassScrolled() {
     if (window.scrollY > 100) {
       document.querySelector('body').classList.add('scrolled');
@@ -25,66 +14,75 @@ class Site {
     }
   }
 
-  animateImage() {
-    const bodyRect = document.body.getBoundingClientRect();
-    const topBounding = this.elm.getBoundingClientRect();
-    const topWrap = topBounding.top - bodyRect.top;
+  getTopPos(elm) {
+    const bodyRect = document.body.getBoundingClientRect(),
+      topBounding = elm.getBoundingClientRect(),
+      topWrap = topBounding.top - bodyRect.top;
 
-    const img = this.elm.querySelector('.floating-image');
-    let posStart = img.offsetTop,
-      st = window.scrollY,
-      distance = st - this.lastScrollTop;
-
-    if (topWrap < window.scrollY + window.innerHeight - window.innerHeight / 3) {
-      let posTmp = posStart + distance * 4;
-      img.style.top = posTmp + 'px';
-    }
-    this.lastScrollTop = st;
+    return topWrap;
   }
 
-  productImageAnimation() {
-    const mainImg = document.querySelector('.block_1 .w_thumb');
-
-    if (this.isScrollDown) {
-      if (this.mainPos >= 70) { return; }
-
-      this.mainPos += 3;
-      mainImg.style.transform = `translateY(${this.mainPos}px)`;
+  isScrollDown() {
+    if (window.scrollY > this.lastScrollTop) {
+      return true;
     }
     else {
-      if (this.mainPos <= 0) { return; }
-
-      this.mainPos -= 3;
-      mainImg.style.transform = `translateY(${this.mainPos}px)`;
+      return false;
     }
   }
 
-  onWindowScroll() {
-    window.addEventListener('scroll', () => {
-      this.checkIsScrollDown();
-      this.handleClassScrolled();
-      this.productImageAnimation();
-      this.animateImage();
-    });
+  implementFluctuations(type, wrap, per) {
+    const winY = window.scrollY;
+    const topPosElm = this.getTopPos(wrap);
+    const percentage = parseInt(100 - ((topPosElm - winY) / window.innerHeight * 100));
+    const distanceBot = parseInt(winY + window.innerHeight - topPosElm);
+    const deg = percentage * 360 / 100;
+
+    if (type === 1) {
+      if (percentage < 0 || distanceBot < 0) {
+        wrap.querySelector('img').style.transform = `translateY(0px) rotate(0deg)`;
+        return;
+      }
+      wrap.querySelector('img').style.transform = `translateY(${distanceBot * per}px) rotate(${deg}deg)`;
+    }
+
+    if (type === 2) {
+      if (this.isScrollDown()) {
+        if (this.mainPos >= 70) { return; }
+
+        this.mainPos += 3;
+        wrap.querySelector('img').style.transform = `translateY(${this.mainPos}px)`;
+      }
+      else {
+        if (this.mainPos <= 0) { return; }
+
+        this.mainPos -= 3;
+        wrap.querySelector('img').style.transform = `translateY(${this.mainPos}px)`;
+      }
+      this.lastScrollTop = window.scrollY;
+    }
   }
 
-  init() {
-    AOS.init();
-    this.handleClassScrolled();
-    this.onWindowScroll();
+  parallax(type, elm, per) {
+    this.implementFluctuations(type, elm, per);
+    window.addEventListener('scroll', () => {
+      this.implementFluctuations(type, elm, per);
+    });
   }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  const img1 = new Site(document.querySelector('.floating-image-wrap-1'));
-  img1.init();
+AOS.init();
 
-  const img2 = new Site(document.querySelector('.floating-image-wrap-2'));
-  img2.init();
+const site = new Site();
+site.handleClassScrolled();
+window.addEventListener('scroll', () => {
+  site.handleClassScrolled();
+});
 
-  const img3 = new Site(document.querySelector('.floating-image-wrap-3'));
-  img3.init();
-
-  const img4 = new Site(document.querySelector('.floating-image-wrap-4'));
-  img4.init();
+window.addEventListener('load', () => {
+  site.parallax(1, document.querySelector('.floating-image-wrap-1'), 0.5);
+  site.parallax(1, document.querySelector('.floating-image-wrap-2'), 0.5);
+  site.parallax(1, document.querySelector('.floating-image-wrap-3'), 0.5);
+  site.parallax(1, document.querySelector('.floating-image-wrap-4'), 0.5);
+  site.parallax(2, document.querySelector('.block_1'), 1);
 });
