@@ -24,11 +24,9 @@ class Site {
     let posStart = img.offsetTop,
       st = window.scrollY,
       distance = st - this.lastScrollTop;
-console.log(distance);
 
     if (topW < window.scrollY + window.innerHeight - window.innerHeight / 3) {
-      img.style.top = posStart + distance * 5 + 'px';
-      this.elm.classList.add('active');
+      img.style.top = posStart + distance * 4 + 'px';
     }
     this.lastScrollTop = st;
   }
