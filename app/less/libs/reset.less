@@ -17,10 +17,13 @@ html {
 *, *:before, *:after {.box-sizing(inherit);}
 body {
   font-family: @font-family-base;
-  font-size: @font-size;
+  font-size: 1.7rem;
   color: @text-color;
   line-height: 1;
   background-color: @bgd-body;
+  @media (min-width: 992px) {
+    font-size: 1.9rem;
+  }
 }
 audio, canvas, progress, video {
   display: inline-block;
