@@ -44,7 +44,7 @@ PUB.fnt = PUB.root + 'fonts/';
 PUB.img = PUB.root + 'images/';
 
 task('scripts', () =>
-  src([SRC.js + 'site.js', SRC.js + 'components/*.js'])
+  src(SRC.js + 'site.js')
     .pipe(sourcemaps.init())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
@@ -193,7 +193,7 @@ task('webserver', (done) => {
 });
 
 task('build',
-  parallel('less', 'pug', 'scripts', 'libs', 'copyAssets', 'watch')
+  parallel('less', 'pug', 'scripts', 'copyAssets', 'watch')
 );
 task('default',
   series('clean', 'build', 'webserver')
