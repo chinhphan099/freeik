@@ -5,15 +5,13 @@ class Site {
     this.lastScrollTop = window.scrollY;
   }
 
-  onPageScrolling() {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        document.querySelector('body').classList.add('scrolled');
-      }
-      else {
-        document.querySelector('body').classList.remove('scrolled');
-      }
-    });
+  handleClassScrolled() {
+    if (window.scrollY > 100) {
+      document.querySelector('body').classList.add('scrolled');
+    }
+    else {
+      document.querySelector('body').classList.remove('scrolled');
+    }
   }
 
   animateImage() {
@@ -33,16 +31,17 @@ class Site {
     this.lastScrollTop = st;
   }
 
-  onPageWheeling() {
+  onWindowScroll() {
     window.addEventListener('scroll', () => {
+      this.handleClassScrolled();
       this.animateImage();
     });
   }
 
   init() {
     AOS.init();
-    this.onPageScrolling();
-    this.onPageWheeling();
+    this.handleClassScrolled();
+    this.onWindowScroll();
   }
 }
 
