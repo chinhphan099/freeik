@@ -17,6 +17,7 @@
   }
 
   function init() {
+    AOS.init();
     onPageScrolling();
     onPageWheeling();
   }
