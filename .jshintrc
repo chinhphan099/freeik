@@ -28,6 +28,7 @@
     "locations": true,
     "FB": true,
     "YT": true,
+    "AOS": true,
     "onYouTubeIframeAPIReady": true
   }
 }
