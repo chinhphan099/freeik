@@ -8,7 +8,7 @@
     .w_thumb {
         text-align: center;
         img {
-            max-height: 386px;
+            max-width: 208px;
         }
     }
     h1 {
@@ -69,6 +69,22 @@
             font-size: 22px;
             line-height: 26px;
             color: #fff;
+        }
+    }
+    @media(min-width: 768px) {
+        .w_item {
+            .flex-display();
+            .align-items(center);
+        }
+        .w_thumb {
+            margin-bottom: 0;
+            width: 284px;
+            img {
+                max-width: 100%;
+            }
+        }
+        .w_content {
+            .flex(1 0);
         }
     }
 }
