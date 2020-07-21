@@ -128,20 +128,32 @@ section {
   overflow-y: hidden;
 }
 
-.keyframes(rotate1, {
-  from {
+.keyframes(rotate2, {
+  0% {
     .rotate(0deg);
   }
-  to {
+  25% {
+    .rotate(90deg);
+  }
+  75% {
+    .rotate(180deg);
+  }
+  100% {
     .rotate(360deg);
   }
 });
 
-.keyframes(rotate2, {
-  from {
+.keyframes(rotate1, {
+  0% {
     .rotate(0deg);
   }
-  to {
+  25% {
+    .rotate(-90deg);
+  }
+  75% {
+    .rotate(-180deg);
+  }
+  100% {
     .rotate(-360deg);
   }
 });
@@ -151,8 +163,8 @@ section {
     position: absolute;
     top: 50px;
     right: calc(~"100% + 50px");
-    .animation(rotate2 30s linear infinite forwards);
     .transition(top 150ms linear);
+    .animation(rotate1 30s linear infinite forwards);
   }
 }
 .floating-image-wrap-2 {
@@ -160,19 +172,25 @@ section {
     position: absolute;
     top: 20px;
     right: calc(~"100% + 50px");
-    .animation(rotate2 30s linear infinite forwards);
     .transition(top 150ms linear);
+    .animation(rotate1 30s linear infinite forwards);
   }
 }
 .floating-image-wrap-3 {
   .floating-image {
-    display: none;
+    position: absolute;
+    top: 20px;
     left: calc(~"100% + 50px");
+    .transition(top 150ms linear);
+    .animation(rotate2 30s linear infinite forwards);
   }
 }
 .floating-image-wrap-4 {
   .floating-image {
-    display: none;
-    left: calc(~"100% + 50px");
+    position: absolute;
+    top: 20px;
+    left: calc(~"100% + 100px");
+    .transition(top 150ms linear);
+    .animation(rotate2 30s linear infinite forwards);
   }
 }

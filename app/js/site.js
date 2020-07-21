@@ -1,6 +1,7 @@
 class Site {
   constructor(elm) {
     this.elm = elm;
+    this.timer = null;
     this.lastScrollTop = window.scrollY;
   }
 
@@ -17,18 +18,17 @@ class Site {
 
   animateImage() {
     const bodyRect = document.body.getBoundingClientRect();
-    const topWrap = this.elm.getBoundingClientRect();
-    const topW = topWrap.top - bodyRect.top;
+    const topBounding = this.elm.getBoundingClientRect();
+    const topWrap = topBounding.top - bodyRect.top;
 
     const img = this.elm.querySelector('.floating-image');
     let posStart = img.offsetTop,
       st = window.scrollY,
       distance = st - this.lastScrollTop;
-console.log(distance);
 
-    if (topW < window.scrollY + window.innerHeight - window.innerHeight / 3) {
-      img.style.top = posStart + distance * 5 + 'px';
-      this.elm.classList.add('active');
+    if (topWrap < window.scrollY + window.innerHeight - window.innerHeight / 3) {
+      let posTmp = posStart + distance * 4;
+      img.style.top = posTmp + 'px';
     }
     this.lastScrollTop = st;
   }
@@ -47,9 +47,15 @@ console.log(distance);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  const a = new Site(document.querySelector('.floating-image-wrap-1'));
-  a.init();
+  const img1 = new Site(document.querySelector('.floating-image-wrap-1'));
+  img1.init();
 
-  const b = new Site(document.querySelector('.floating-image-wrap-2'));
-  b.init();
+  const img2 = new Site(document.querySelector('.floating-image-wrap-2'));
+  img2.init();
+
+  const img3 = new Site(document.querySelector('.floating-image-wrap-3'));
+  img3.init();
+
+  const img4 = new Site(document.querySelector('.floating-image-wrap-4'));
+  img4.init();
 });
