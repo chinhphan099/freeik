@@ -1,9 +1,13 @@
 .container {
+  position: relative;
   width: 100%;
   max-width: 970px;
   margin: 0 auto;
   padding-left: 12px;
   padding-right: 12px;
+}
+.relative {
+  position: relative;
 }
 
 .keyframes(logoMoving, {
@@ -121,22 +125,54 @@ footer {
 }
 
 section {
-  position: relative;
   overflow-y: hidden;
 }
-.floating-image-1 {
-  position: absolute;
-  right: calc(~"100% - 970px / 2 + 100px");
+
+.keyframes(rotate1, {
+  from {
+    .rotate(0deg);
+  }
+  to {
+    .rotate(360deg);
+  }
+});
+
+.keyframes(rotate2, {
+  from {
+    .rotate(0deg);
+  }
+  to {
+    .rotate(-360deg);
+  }
+});
+
+.floating-image-wrap-1 {
+  .floating-image {
+    position: absolute;
+    top: 50px;
+    right: calc(~"100% + 50px");
+    .animation(rotate2 30s linear infinite forwards);
+    .transition(top 150ms linear);
+  }
 }
-.floating-image-2 {
-  display: none;
-  right: calc(~"100% - 970px / 2 + 100px");
+.floating-image-wrap-2 {
+  .floating-image {
+    position: absolute;
+    top: 20px;
+    right: calc(~"100% + 50px");
+    .animation(rotate2 30s linear infinite forwards);
+    .transition(top 150ms linear);
+  }
 }
-.floating-image-3 {
-  display: none;
-  left: calc(~"100% - 970px / 2 + 100px");
+.floating-image-wrap-3 {
+  .floating-image {
+    display: none;
+    left: calc(~"100% + 50px");
+  }
 }
-.floating-image-4 {
-  display: none;
-  left: calc(~"100% - 970px / 2 + 100px");
+.floating-image-wrap-4 {
+  .floating-image {
+    display: none;
+    left: calc(~"100% + 50px");
+  }
 }
