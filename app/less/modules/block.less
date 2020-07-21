@@ -2,9 +2,19 @@
 .container {
     max-width: 1230px;
 }
+
+@media(min-width: 992px) {
+    p {
+        line-height: 24px;
+    }
+}
+
 // Block
 .section-1 {
-    background: url("/images/upload/bg-main-1.jpg") center center ~"/ cover" no-repeat;
+    background: url("/images/upload/bg-main-1mb.jpg") top center ~"/ 100%" no-repeat;
+    @media(min-width: 768px) {
+        background: url("/images/upload/bg-main-1.jpg") center ~"/ cover" no-repeat;
+    }
 }
 
 
@@ -40,11 +50,12 @@
 }
 
 .block_1 {
-    padding: 140px 0;
+    padding: 140px 0 100px;
     .w_thumb {
         text-align: center;
         img {
             max-width: 208px;
+            margin-left: -50px;
         }
     }
     h1 {
@@ -75,6 +86,7 @@
         }
     }
     .btn_wrap {
+        text-align: center;
         a {
             padding: 7px 20px;
             font-size: 14px;
@@ -111,21 +123,24 @@
         }
     }
     @media(min-width: 768px) {
+        padding-top: 120px;
         padding-bottom: 30px;
         .w_item {
             .flex-display();
             .align-items(center);
+            .justify-content(center);
         }
         .w_thumb {
             margin-bottom: 0;
             width: 284px;
             img {
                 max-width: 100%;
+                margin-left: 0;
             }
         }
         .w_content {
             position: relative;
-            .flex(1 0);
+            .flex(1 0 0);
             max-width: 420px;
         }
         .btn_switch {
@@ -140,6 +155,9 @@
         .btn_wrap {
             text-align: center;
         }
+        
+    }
+    @media(min-width: 992px) {
         .arrow {
             margin-top: -40px;
             margin-bottom: -40px;
@@ -156,7 +174,7 @@
 
 //---------------------------------------------------------section 2 
 .section-2 {
-    background-color: #E7EBEE;
+    background-color: #e7ebee;
 }
 .block_2 {
     font-weight: 300;
@@ -262,16 +280,17 @@
         
     }
     @media(min-width: 992px) {
-
+        padding-top: 20px;
         .w_item {
             .flex-display();
             .align-items(center);
         }
         .w_thumb {
             width: 50%;
+            margin-bottom: 0;
         }
         .w_content {
-            .flex(1 0);
+            .flex(1 0 0);
             margin-left: 50px;
             max-width: 470px;
         }
@@ -311,7 +330,7 @@
             padding: 70px 60px;
         }
         .w_steps {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             .flex-display();
             .align-items(center);
             .justify-content(center);
@@ -323,7 +342,7 @@
             }
         }
         .w_desc {
-            padding: 0 30px;
+            padding: 0 35px;
         }
     }
     @media(min-width: 992px) {
@@ -398,7 +417,7 @@
                 margin-bottom: 0;
             }
             .w_content {
-                .flex(1 0);
+                .flex(1 0 0);
                 padding-right: 30px;
             }
         }
