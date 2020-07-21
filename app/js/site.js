@@ -1,8 +1,19 @@
 class Site {
   constructor(elm) {
     this.elm = elm;
-    this.timer = null;
     this.lastScrollTop = window.scrollY;
+    this.mainPos = 0;
+    this.isScrollDown = true;
+    this.translateYMain = 0 ;
+  }
+
+  checkIsScrollDown() {
+    if (window.scrollY > this.lastScrollTop) {
+      this.isScrollDown = true;
+    }
+    else {
+      this.isScrollDown = false;
+    }
   }
 
   handleClassScrolled() {
@@ -31,9 +42,28 @@ class Site {
     this.lastScrollTop = st;
   }
 
+  productImageAnimation() {
+    const mainImg = document.querySelector('.block_1 .w_thumb');
+
+    if (this.isScrollDown) {
+      if (this.mainPos >= 70) { return; }
+
+      this.mainPos += 3;
+      mainImg.style.transform = `translateY(${this.mainPos}px)`;
+    }
+    else {
+      if (this.mainPos <= 0) { return; }
+
+      this.mainPos -= 3;
+      mainImg.style.transform = `translateY(${this.mainPos}px)`;
+    }
+  }
+
   onWindowScroll() {
     window.addEventListener('scroll', () => {
+      this.checkIsScrollDown();
       this.handleClassScrolled();
+      this.productImageAnimation();
       this.animateImage();
     });
   }
