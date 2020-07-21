@@ -7,6 +7,38 @@
     background: url("/images/upload/bg-main-1.jpg") center center ~"/ cover" no-repeat;
 }
 
+
+@keyframes facaIn {
+    0% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes switch {
+    0% {
+        top: 10px;
+        opacity: 1;
+    }
+    25% {
+        top: 30px;
+    }
+    50% {
+        top: 30px;
+        opacity: 0;
+    }
+    100% {
+        top: 30px;
+        opacity: 0;
+    }
+    
+}
+
 .block_1 {
     padding: 140px 0;
     .w_thumb {
@@ -30,6 +62,7 @@
         border-radius: 16px;
         background-color: #333333;
         width: 32px;
+        overflow: hidden;
         height: 47px;
         > span {
             position: absolute;
@@ -38,6 +71,7 @@
             .size(10px);
             background-color: #fff;
             border-radius: 50%;
+            animation: switch 3s infinite;
         }
     }
     .btn_wrap {
@@ -73,6 +107,7 @@
             font-size: 22px;
             line-height: 26px;
             color: #fff;
+            animation: facaIn .5s infinite;
         }
     }
     @media(min-width: 768px) {
