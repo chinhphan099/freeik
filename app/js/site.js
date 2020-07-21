@@ -1,6 +1,7 @@
 class Site {
   constructor(elm) {
     this.elm = elm;
+    this.timer = null;
     this.lastScrollTop = window.scrollY;
   }
 
@@ -17,16 +18,17 @@ class Site {
 
   animateImage() {
     const bodyRect = document.body.getBoundingClientRect();
-    const topWrap = this.elm.getBoundingClientRect();
-    const topW = topWrap.top - bodyRect.top;
+    const topBounding = this.elm.getBoundingClientRect();
+    const topWrap = topBounding.top - bodyRect.top;
 
     const img = this.elm.querySelector('.floating-image');
     let posStart = img.offsetTop,
       st = window.scrollY,
       distance = st - this.lastScrollTop;
 
-    if (topW < window.scrollY + window.innerHeight - window.innerHeight / 3) {
-      img.style.top = posStart + distance * 4 + 'px';
+    if (topWrap < window.scrollY + window.innerHeight - window.innerHeight / 3) {
+      let posTmp = posStart + distance * 4;
+      img.style.top = posTmp + 'px';
     }
     this.lastScrollTop = st;
   }

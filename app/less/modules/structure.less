@@ -128,39 +128,33 @@ section {
   overflow-y: hidden;
 }
 
-.keyframes(rotate1, {
-  from {
-    .rotate(0deg);
-  }
-  to {
-    .rotate(360deg);
-  }
-});
-
 .keyframes(rotate2, {
-  from {
-    .rotate(360deg);
-  }
-  to {
+  0% {
     .rotate(0deg);
+  }
+  25% {
+    .rotate(90deg);
+  }
+  75% {
+    .rotate(180deg);
+  }
+  100% {
+    .rotate(360deg);
   }
 });
 
-.keyframes(rotate3, {
-  from {
-    .rotate(360deg);
-  }
-  to {
+.keyframes(rotate1, {
+  0% {
     .rotate(0deg);
   }
-});
-
-.keyframes(rotate4, {
-  from {
-    .rotate(360deg);
+  25% {
+    .rotate(-90deg);
   }
-  to {
-    .rotate(0deg);
+  75% {
+    .rotate(-180deg);
+  }
+  100% {
+    .rotate(-360deg);
   }
 });
 
@@ -170,8 +164,7 @@ section {
     top: 50px;
     right: calc(~"100% + 50px");
     .transition(top 150ms linear);
-    .animation(rotate2 30s linear infinite forwards);
-    &.active {}
+    .animation(rotate1 30s linear infinite forwards);
   }
 }
 .floating-image-wrap-2 {
@@ -180,7 +173,7 @@ section {
     top: 20px;
     right: calc(~"100% + 50px");
     .transition(top 150ms linear);
-    .animation(rotate2 30s linear infinite forwards);
+    .animation(rotate1 30s linear infinite forwards);
   }
 }
 .floating-image-wrap-3 {
@@ -189,7 +182,7 @@ section {
     top: 20px;
     left: calc(~"100% + 50px");
     .transition(top 150ms linear);
-    .animation(rotate3 30s linear infinite forwards);
+    .animation(rotate2 30s linear infinite forwards);
   }
 }
 .floating-image-wrap-4 {
@@ -198,6 +191,6 @@ section {
     top: 20px;
     left: calc(~"100% + 100px");
     .transition(top 150ms linear);
-    .animation(rotate4 30s linear infinite forwards);
+    .animation(rotate2 30s linear infinite forwards);
   }
 }
