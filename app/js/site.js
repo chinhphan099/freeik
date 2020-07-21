@@ -31,42 +31,40 @@ class Site {
     }
   }
 
-  implementFluctuations(type, wrap, per) {
+  implementFluctuations(wrap, ratio) {
     const winY = window.scrollY;
     const topPosElm = this.getTopPos(wrap);
-    const percentage = parseInt(100 - ((topPosElm - winY) / window.innerHeight * 100));
+    const percentage = parseInt(((topPosElm - winY) / window.innerHeight * 100));
     const distanceBot = parseInt(winY + window.innerHeight - topPosElm);
-    const deg = percentage * 360 / 100;
+    const deg = (100 - percentage) * 360 / 100;
 
-    if (type === 1) {
-      if (percentage < 0 || distanceBot < 0) {
-        wrap.querySelector('img').style.transform = `translateY(0px) rotate(0deg)`;
-        return;
-      }
-      wrap.querySelector('img').style.transform = `translateY(${distanceBot * per}px) rotate(${deg}deg)`;
+    if (100 - percentage < 0 || distanceBot < 0) {
+      wrap.querySelector('img').style.transform = `translateY(0px) rotate(0deg)`;
+      return;
     }
-
-    if (type === 2) {
-      if (this.isScrollDown()) {
-        if (this.mainPos >= 70) { return; }
-
-        this.mainPos += 3;
-        wrap.querySelector('img').style.transform = `translateY(${this.mainPos}px)`;
-      }
-      else {
-        if (this.mainPos <= 0) { return; }
-
-        this.mainPos -= 3;
-        wrap.querySelector('img').style.transform = `translateY(${this.mainPos}px)`;
-      }
-      this.lastScrollTop = window.scrollY;
-    }
+    wrap.querySelector('img').style.transform = `translateY(${distanceBot * ratio}px) rotate(${deg}deg)`;
+  }
+  parallax(elm, ratio) {
+    this.implementFluctuations(elm, ratio);
+    window.addEventListener('scroll', () => {
+      this.implementFluctuations(elm, ratio);
+    });
   }
 
-  parallax(type, elm, per) {
-    this.implementFluctuations(type, elm, per);
+  implementFluctuations1(wrap, ratio) {
+    const winY = window.scrollY;
+    const topPosElm = this.getTopPos(wrap);
+    const percentage = parseInt(((topPosElm - winY) / window.innerHeight * 100));
+    const tmpDistance = (100 - percentage) * ratio;
+
+    if (tmpDistance <= 120) {
+      wrap.querySelector('img').style.transform = `translateY(${tmpDistance - 55}px)`;
+    }
+  }
+  parallax1(elm, ratio) {
+    this.implementFluctuations1(elm, ratio);
     window.addEventListener('scroll', () => {
-      this.implementFluctuations(type, elm, per);
+      this.implementFluctuations1(elm, ratio);
     });
   }
 }
@@ -80,9 +78,9 @@ window.addEventListener('scroll', () => {
 });
 
 window.addEventListener('load', () => {
-  site.parallax(1, document.querySelector('.floating-image-wrap-1'), 0.5);
-  site.parallax(1, document.querySelector('.floating-image-wrap-2'), 0.5);
-  site.parallax(1, document.querySelector('.floating-image-wrap-3'), 0.5);
-  site.parallax(1, document.querySelector('.floating-image-wrap-4'), 0.5);
-  site.parallax(2, document.querySelector('.block_1'), 1);
+  site.parallax(document.querySelector('.floating-image-wrap-1'), 0.5);
+  site.parallax(document.querySelector('.floating-image-wrap-2'), 0.5);
+  site.parallax(document.querySelector('.floating-image-wrap-3'), 0.5);
+  site.parallax(document.querySelector('.floating-image-wrap-4'), 0.5);
+  site.parallax1(document.querySelector('.block_1 .w_thumb'), 70 / 100);
 });
