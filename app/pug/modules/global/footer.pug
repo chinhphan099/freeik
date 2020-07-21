@@ -1,6 +1,17 @@
 footer
-  p.copyright Copyright ©2020 InfinitiKloud | All Rights Reserved.
-  ul.foot-nav
-    li: +link('Terms & Conditions', 'terms.html')
-    li: +link('Privacy Policy', 'policy.html')
-    li: +link('Contact Us', 'contact-us.html')
+  .container
+    p.copyright Copyright ©2020 InfinitiKloud | All Rights Reserved.
+    ul.foot-nav
+      li: +link('Terms & Conditions', 'terms.html')
+      li: +link('Privacy Policy', 'policy.html')
+      li: +link('Contact Us', 'contact-us.html')
+    .DMCA_Logo
+      +link('DMCA.com Protection Status', 'https://www.dmca.com/Protection/Status.aspx?ID=ef1fadd9-e577-4b7f-ac63-515756019c06')(target="_blank")
+        img(src="https://images.dmca.com/Badges/dmca-badge-w150-5x1-10.png?ID=ef1fadd9-e577-4b7f-ac63-515756019c06")
+      script.
+        (function() {
+          var a = document.querySelector('.DMCA_Logo a');
+          if (a && a.href.indexOf('refurl=') === -1) {
+            a.href += (a.href.indexOf('?') >= 0 ? '&' : '?') + 'refurl=' + location.href;
+          }
+        })();
