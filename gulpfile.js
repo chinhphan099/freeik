@@ -14,7 +14,7 @@ const { task, watch, src, dest, parallel, series } = require('gulp'),
   babel = require('gulp-babel'),
   sourcemaps = require('gulp-sourcemaps'),
   qunit = require('gulp-qunit'),
-  autoprefixer = require('gulp-autoprefixer'),
+  // autoprefixer = require('gulp-autoprefixer'),
   ip = require('ip');
 
 // Source folder configuration
@@ -111,7 +111,7 @@ task('less', () =>
       gutil.log(displayErr);
       this.emit('end');
     }))
-    .pipe(autoprefixer('last 3 versions', 'ie 10'))
+    // .pipe(autoprefixer('last 3 versions', 'ie 10'))
     .pipe(dest(PUB.css))
   //.pipe(cssmin())
   //.pipe(rename({ suffix: '.min' }))
