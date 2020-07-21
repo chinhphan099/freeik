@@ -45,9 +45,15 @@ class Site {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  const a = new Site(document.querySelector('.floating-image-wrap-1'));
-  a.init();
+  const img1 = new Site(document.querySelector('.floating-image-wrap-1'));
+  img1.init();
 
-  const b = new Site(document.querySelector('.floating-image-wrap-2'));
-  b.init();
+  const img2 = new Site(document.querySelector('.floating-image-wrap-2'));
+  img2.init();
+
+  const img3 = new Site(document.querySelector('.floating-image-wrap-3'));
+  img3.init();
+
+  const img4 = new Site(document.querySelector('.floating-image-wrap-4'));
+  img4.init();
 });

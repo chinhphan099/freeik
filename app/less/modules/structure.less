@@ -139,10 +139,28 @@ section {
 
 .keyframes(rotate2, {
   from {
-    .rotate(0deg);
+    .rotate(360deg);
   }
   to {
-    .rotate(-360deg);
+    .rotate(0deg);
+  }
+});
+
+.keyframes(rotate3, {
+  from {
+    .rotate(360deg);
+  }
+  to {
+    .rotate(0deg);
+  }
+});
+
+.keyframes(rotate4, {
+  from {
+    .rotate(360deg);
+  }
+  to {
+    .rotate(0deg);
   }
 });
 
@@ -163,18 +181,23 @@ section {
     right: calc(~"100% + 50px");
     .transition(top 150ms linear);
     .animation(rotate2 30s linear infinite forwards);
-    &.active {}
   }
 }
 .floating-image-wrap-3 {
   .floating-image {
-    display: none;
+    position: absolute;
+    top: 20px;
     left: calc(~"100% + 50px");
+    .transition(top 150ms linear);
+    .animation(rotate3 30s linear infinite forwards);
   }
 }
 .floating-image-wrap-4 {
   .floating-image {
-    display: none;
+    position: absolute;
+    top: 20px;
     left: calc(~"100% + 50px");
+    .transition(top 150ms linear);
+    .animation(rotate4 30s linear infinite forwards);
   }
 }
