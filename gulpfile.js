@@ -193,7 +193,7 @@ task('webserver', (done) => {
 });
 
 task('build',
-  parallel('less', 'pug', 'scripts', 'jsguide', 'libs', 'copyAssets', 'watch')
+  parallel('less', 'pug', 'scripts', 'libs', 'copyAssets', 'watch')
 );
 task('default',
   series('clean', 'build', 'webserver')
