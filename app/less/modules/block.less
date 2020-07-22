@@ -13,9 +13,9 @@ section {
 }
 // Block
 .section-1 {
-  background: url("/images/upload/bg-main-1mb.jpg") top center ~"/ 100%" no-repeat;
+  background: url("../images/upload/bg-main-1mb.jpg") top center ~"/ 100%" no-repeat;
   @media(min-width: 768px) {
-    background: url("/images/upload/bg-main-1.jpg") center ~"/ cover" no-repeat;
+    background: url("../images/upload/bg-main-1.jpg") bottom center ~"/ cover" no-repeat;
   }
 }
 
@@ -200,14 +200,7 @@ section {
   background-color: #e7ebee;
   overflow: hidden;
 }
-.keyframes(fadeIn, {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-});
+
 .block_2 {
   font-weight: 300;
   letter-spacing: 0.45px;
@@ -218,16 +211,14 @@ section {
     .w_title {
       .translateX(-400px);
       opacity: 0;
-      .transition(transform 400ms linear);
-      .animation(fadeIn 200ms 130ms linear forwards);
+      .transition(~"transform 400ms linear, opacity 400ms linear");
     }
   }
   .item-2 {
     .w_title {
       .translateX(400px);
       opacity: 0;
-      .transition(transform 400ms linear);
-      .animation(fadeIn 200ms 130ms linear forwards);
+      .transition(~"transform 400ms linear, opacity 400ms linear");
     }
   }
   .w_title {
@@ -352,9 +343,9 @@ section {
 
 //---------------------------------------------------------section 4
 .section-4 {
-  background: url("/images/upload/bg-3-mb.jpg") top center ~"/ 100%" no-repeat;
+  background: url("../images/upload/bg-3-mb.jpg") top center ~"/ 100%" no-repeat;
   @media(min-width: 768px) {
-    background: url("/images/upload/bg-3.jpg") top center ~"/ 100%" no-repeat;
+    background: url("../images/upload/bg-3.jpg") top center ~"/ 100%" no-repeat;
   }
 }
 .block_4 {
@@ -485,13 +476,13 @@ section {
 
 //---------------------------------------------------------section 6
 .section-7 {
-  background: url("/images/upload/bg-4-mb.jpg") center bottom ~"/ 100%" no-repeat;
+  background: url("../images/upload/bg-4-mb.jpg") center bottom ~"/ 100%" no-repeat;
   overflow: hidden;
   .container {
     max-width: 1190px;
   }
   @media(min-width: 768px) {
-    background: #fff url("/images/upload/bg-4.jpg") center top ~"/ 100%" no-repeat;
+    background: #fff url("../images/upload/bg-4.jpg") center top ~"/ 100%" no-repeat;
   }
 }
 .block_7 {

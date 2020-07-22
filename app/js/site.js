@@ -74,18 +74,19 @@ class Site {
     });
   }
 
-  verticalMovingFluctuations(wrap, max, direction) {
+  verticalMovingFluctuations(elm, max, direction) {
     const winY = window.scrollY,
-      topPosElm = this.getOffetTopElm(wrap),
+      topPosElm = this.getOffetTopElm(elm),
       percentage = (topPosElm - winY) / window.innerHeight * 100,
       distance = percentage * 2 * max / 100 - window.innerHeight / 10;
 
+    elm.style.opacity = '1';
     if (distance > 0) {
       if (direction === 'fromLeft') {
-        wrap.style.transform = `translateX(-${distance}px)`;
+        elm.style.transform = `translateX(-${distance}px)`;
       }
       else {
-        wrap.style.transform = `translateX(${distance}px)`;
+        elm.style.transform = `translateX(${distance}px)`;
       }
     }
   }

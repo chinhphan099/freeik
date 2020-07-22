@@ -168,8 +168,7 @@ task('test', () =>
 task('watch', (done) => {
   watch([SRC.less + '*.less', SRC.less + '**/*.less'], series('less'));
   watch([SRC.js + 'site.js', SRC.js + 'components/*.js'], series('scripts'));
-  watch([SRC.js + 'guide/guide.js', SRC.js + 'guide/**/*.js'], series('jsguide'));
-  watch(SRC.js + 'libs/*.js', series('libs'));
+  //watch(SRC.js + 'libs/*.js', series('libs'));
   watch([SRC.pug + '**/*.pug', SRC.pug + '*.pug'], series('pug'));
   watch(FILES.assets, series('copyAssets'));
   done();
