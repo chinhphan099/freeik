@@ -1,7 +1,4 @@
 
-.block_1 .w_thumb img {
-  .transition(all 125ms linear);
-}
 .main-container {
   overflow-x: hidden;
 }
@@ -64,7 +61,7 @@ header {
   }
   .logo {
     opacity: 0;
-    .animation(logoMoving 1s 130ms ease forwards);
+    .animation(logoMoving 800ms 630ms ease forwards);
     img {
       width: 165px;
     }
@@ -72,7 +69,7 @@ header {
   .btn-wrap {
     margin-left: 10px;
     opacity: 0;
-    .animation(buttonMoving 1s 130ms ease forwards);
+    .animation(buttonMoving 800ms 630ms ease forwards);
     a {
       display: inline-block;
       padding: 12px 20px;
@@ -98,6 +95,9 @@ footer {
   text-align: center;
   padding: 30px 0;
   font-family: Helvetica, sans-serif;
+  .container {
+    max-width: 970px;
+  }
   .DMCA_Logo {
     clear: both;
   }
@@ -129,10 +129,6 @@ footer {
       float: right;
     }
   }
-}
-
-section {
-  overflow-y: hidden;
 }
 
 .keyframes(rotate2, {
