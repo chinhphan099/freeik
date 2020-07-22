@@ -128,10 +128,21 @@ class Site {
       this.handleClassScrolled();
     });
   }
+  learnMoreEvent() {
+    this.selector('.btn_wrap .btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      this.selector('.section-2').scrollIntoView({'behavior': 'smooth'});
+    });
+  }
+
+  init() {
+    this.checkSiteScrolling();
+    this.learnMoreEvent();
+  }
 }
 
 const site = new Site();
-site.checkSiteScrolling();
+site.init();
 
 window.addEventListener('load', () => {
   site.productImageAnimation(site.selector('.block_1 .w_thumb'), 0.7);
