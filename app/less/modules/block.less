@@ -1,4 +1,6 @@
-
+body {
+  background-color: #e7ebee;
+}
 .container {
   max-width: 1230px;
 }
@@ -16,6 +18,10 @@ section {
   background: url("../images/upload/bg-main-1mb.jpg") top center ~"/ 100%" no-repeat;
   @media(min-width: 768px) {
     background: url("../images/upload/bg-main-1.jpg") bottom center ~"/ cover" no-repeat;
+  }
+  @media(min-width: 1200px) {
+    padding-bottom: 200px;
+    margin-bottom: -200px;
   }
 }
 
@@ -197,7 +203,6 @@ section {
 
 //---------------------------------------------------------section 2
 .section-2 {
-  background-color: #e7ebee;
   overflow: hidden;
 }
 
@@ -333,14 +338,16 @@ section {
       max-width: 470px;
     }
   }
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     .w_thumb {
       transform-origin: top center;
     }
   }
 }
 
-
+.section-4, .section-5, .section-6, .section-7 {
+  background-color: #ebeaef;
+}
 //---------------------------------------------------------section 4
 .section-4 {
   background: url("../images/upload/bg-3-mb.jpg") top center ~"/ 100%" no-repeat;
