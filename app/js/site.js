@@ -89,6 +89,9 @@ class Site {
         elm.style.transform = `translateX(${distance}px)`;
       }
     }
+    else {
+      elm.style.transform = `translateX(0px)`;
+    }
   }
   verticalMoving(elm, max, direction) {
     this.verticalMovingFluctuations(elm, max, direction);
@@ -105,6 +108,9 @@ class Site {
 
     if (distance > 0) {
       wrap.querySelector('.w_content').style.transform = `translateX(${distance}px)`;
+    }
+    else {
+      wrap.querySelector('.w_content').style.transform = `translateX(0px)`;
     }
   }
   whatIsDesc(elm, max) {
