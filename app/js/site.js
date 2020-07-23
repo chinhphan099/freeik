@@ -150,8 +150,14 @@ window.addEventListener('load', () => {
   site.whatIsImage(site.selector('.block_3 .w_item'), 0.45);
   site.whatIsDesc(site.selector('.block_3 .w_item'), 100);
 
-  site.verticalMoving(site.selector('.block_2 .item-1 .w_title'), 100, 'fromLeft');
-  site.verticalMoving(site.selector('.block_2 .item-2 .w_title'), 100, 'fromRight');
+  if (window.innerWidth < 991) {
+    site.verticalMoving(site.selector('.block_2 .item-1 .w_title'), 50, 'fromLeft');
+    site.verticalMoving(site.selector('.block_2 .item-2 .w_title'), 50, 'fromRight');
+  }
+  else {
+    site.verticalMoving(site.selector('.block_2 .item-1 .w_title'), 100, 'fromLeft');
+    site.verticalMoving(site.selector('.block_2 .item-2 .w_title'), 100, 'fromRight');
+  }
 
   site.freeFallingImage(site.selector('.floating-image-wrap-1'), 0.5);
   site.freeFallingImage(site.selector('.floating-image-wrap-2'), 0.5);
