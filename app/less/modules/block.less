@@ -238,6 +238,13 @@ section {
     font-size: 48px;
     color: #ADADAD;
     letter-spacing: -0.62px;
+    span {
+      background: linear-gradient(#f0b429,#f0b429) no-repeat 0 80% ~"/ 0 3px";
+      .transition(~"background-size .3s ease-out");
+      &:hover {
+        background-size: 100% 3px;
+      }
+    }
   }
   .w_content {
     max-width: 870px;
@@ -296,7 +303,6 @@ section {
     }
   }
   @media(min-width: 1220px) {
-
   }
 }
 
